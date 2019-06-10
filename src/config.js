@@ -1,3 +1,5 @@
+export const api = "https://api.elections.openknowledge.be/v1";
+
 export const elections = [
   {
     year: 2019,
