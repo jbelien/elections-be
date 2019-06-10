@@ -1,0 +1,5 @@
+# See https://www.netlify.com/docs/redirects/
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
