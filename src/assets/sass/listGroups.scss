@@ -1,0 +1,44 @@
+.list-groups {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .list-groups-group {
+    margin: 10px auto;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .list-groups-group-name {
+      font-size: 1.17em;
+      font-weight: bold;
+    }
+
+    .list-groups-lists {
+      align-items: stretch;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: stretch;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .list-groups-lists-list {
+        border: 1px solid;
+        flex: 1;
+        margin-right: 5px;
+        margin-top: 5px;
+        padding: 10px;
+
+        .list-groups-lists-list-entity {
+          color: rgba(0, 0, 0, 0.5);
+          font-size: smaller;
+          margin-top: 5px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

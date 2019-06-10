@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { api, elections, electionsTypes } from "../config";
+
+import "../assets/sass/listTypes.scss";
 
 export default class extends React.Component {
   constructor(props) {
@@ -48,7 +51,7 @@ export default class extends React.Component {
   renderList() {
     return this.state.election.types.map(type => {
       return (
-        <li key={type}>
+        <li class="list-types-type" key={type}>
           <Link to={`/${this.state.election.year}/${type}`}>
             <div>
               {electionsTypes[type].fr}
@@ -67,9 +70,27 @@ export default class extends React.Component {
 
     if (typeof status === "undefined") return null;
 
+    const percentage =
+      status.total > 0 ? Math.round(status.count / status.total) * 100 : 0;
+
     return (
-      <div>
-        {status.datetime} : {status.count}/{status.total}
+      <div class="list-types-status">
+        <div>Last update: {status.datetime}</div>
+        <div class="list-types-status-count">
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              aria-valuenow={percentage}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ width: `${percentage}%` }}
+            />
+          </div>
+          <div>
+            {status.count} / {status.total} station(s)
+          </div>
+        </div>
       </div>
     );
   }
@@ -78,7 +99,7 @@ export default class extends React.Component {
     return (
       <div>
         <h1>{this.state.election.year}</h1>
-        <ul>{this.renderList()}</ul>
+        <ul class="list-types">{this.renderList()}</ul>
       </div>
     );
   }

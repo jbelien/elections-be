@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import qs from "query-string";
 
+import { electionsTypes } from "../config";
+
+import "../assets/sass/listGroups.scss";
+
 export default class extends React.Component {
   constructor(props) {
     super(props);
@@ -67,24 +71,38 @@ export default class extends React.Component {
     const { year, type } = this.props.match.params;
 
     return (
-      <li key={group.id}>
-        <Link
-          to={`/${year}/${type}/${group.id}`}
-          style={{ color: "#" + group.color }}
-        >
-          <div>{group.name}</div>
+      <li class="list-groups-group" key={group.id}>
+        <Link to={`/${year}/${type}/${group.id}`}>
+          <div
+            class="list-groups-group-name"
+            style={{ color: `#${group.color}` }}
+          >
+            {group.name}
+          </div>
 
-          <ul>{group.lists.map(list => this.renderList(list))}</ul>
+          <ul class="list-groups-lists">
+            {group.lists.map(list => this.renderList(list, group))}
+          </ul>
         </Link>
       </li>
     );
   }
 
-  renderList(list) {
+  renderList(list, group) {
     return (
-      <li key={list.id}>
-        {list.nr} - {list.name} - {this.state.entities[list.idEntity].name_fr}{" "}
-        {this.state.entities[list.idEntity].name_nl}
+      <li
+        class="list-groups-lists-list"
+        key={list.id}
+        style={{ borderColor: `#${group.color}` }}
+      >
+        <div style={{ color: `#${group.color}` }}>
+          {list.nr} - {list.name}
+        </div>
+        <div class="list-groups-lists-list-entity">
+          {this.state.entities[list.idEntity].name_fr}
+          <br />
+          {this.state.entities[list.idEntity].name_nl}
+        </div>
       </li>
     );
   }
@@ -95,8 +113,12 @@ export default class extends React.Component {
     return (
       <div>
         <h1>{year}</h1>
-        <h2>{type}</h2>
-        <ul>
+        <h2>
+          {electionsTypes[type].fr}
+          <br />
+          {electionsTypes[type].nl}
+        </h2>
+        <ul class="list-groups">
           {this.state.groups
             .sort((a, b) => (a.nr || Infinity) - (b.nr || Infinity))
             .map(group => this.renderGroup(group))}
