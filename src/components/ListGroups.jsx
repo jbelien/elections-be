@@ -71,16 +71,16 @@ export default class extends React.Component {
     const { year, type } = this.props.match.params;
 
     return (
-      <li class="list-groups-group" key={group.id}>
+      <li className="list-groups-group" key={group.id}>
         <Link to={`/${year}/${type}/${group.id}`}>
           <div
-            class="list-groups-group-name"
+            className="list-groups-group-name"
             style={{ color: `#${group.color}` }}
           >
             {group.name}
           </div>
 
-          <ul class="list-groups-lists">
+          <ul className="list-groups-lists">
             {group.lists.map(list => this.renderList(list, group))}
           </ul>
         </Link>
@@ -91,14 +91,14 @@ export default class extends React.Component {
   renderList(list, group) {
     return (
       <li
-        class="list-groups-lists-list"
+      className="list-groups-lists-list"
         key={list.id}
         style={{ borderColor: `#${group.color}` }}
       >
         <div style={{ color: `#${group.color}` }}>
           {list.nr} - {list.name}
         </div>
-        <div class="list-groups-lists-list-entity">
+        <div className="list-groups-lists-list-entity">
           {this.state.entities[list.idEntity].name_fr}
           <br />
           {this.state.entities[list.idEntity].name_nl}
@@ -118,7 +118,7 @@ export default class extends React.Component {
           <br />
           {electionsTypes[type].nl}
         </h2>
-        <ul class="list-groups">
+        <ul className="list-groups">
           {this.state.groups
             .sort((a, b) => (a.nr || Infinity) - (b.nr || Infinity))
             .map(group => this.renderGroup(group))}

@@ -51,7 +51,7 @@ export default class extends React.Component {
   renderList() {
     return this.state.election.types.map(type => {
       return (
-        <li class="list-types-type" key={type}>
+        <li className="list-types-type" key={type}>
           <Link to={`/${this.state.election.year}/${type}`}>
             <div>
               {electionsTypes[type].fr}
@@ -74,12 +74,12 @@ export default class extends React.Component {
       status.total > 0 ? Math.round(status.count / status.total) * 100 : 0;
 
     return (
-      <div class="list-types-status">
+      <div className="list-types-status">
         <div>Last update: {status.datetime}</div>
-        <div class="list-types-status-count">
-          <div class="progress">
+        <div className="list-types-status-count">
+          <div className="progress">
             <div
-              class="progress-bar"
+              className="progress-bar"
               role="progressbar"
               aria-valuenow={percentage}
               aria-valuemin="0"
@@ -99,7 +99,7 @@ export default class extends React.Component {
     return (
       <div>
         <h1>{this.state.election.year}</h1>
-        <ul class="list-types">{this.renderList()}</ul>
+        <ul className="list-types">{this.renderList()}</ul>
       </div>
     );
   }
