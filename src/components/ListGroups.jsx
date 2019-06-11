@@ -92,40 +92,47 @@ export default class extends React.Component {
 
   renderGroup(group) {
     const { year, type } = this.props.match.params;
+    const results = this.state.results.find(g => g.group.id === group.id);
 
     return (
       <li className="list-groups-group" key={group.id}>
-        <Link to={`/${year}/${type}/${group.id}`}>
-          <div
-            className="list-groups-group-name"
-            style={{ color: `#${group.color}` }}
-          >
-            {group.name}
+        <div
+          className="list-groups-group-header"
+          style={{ color: `#${group.color}` }}
+        >
+          <div className="list-groups-group-name">{group.name}</div>
+          <div>
+            {results.votes} vote(s) :{" "}
+            {Math.round((results.votes / results.total) * 100 * 100) / 100}%
           </div>
+        </div>
 
-          <ul className="list-groups-lists">
-            {group.lists.map(list => this.renderList(list, group))}
-          </ul>
-        </Link>
+        <ul className="list-groups-lists">
+          {group.lists.map(list => this.renderList(list, group))}
+        </ul>
       </li>
     );
   }
 
   renderList(list, group) {
+    const { year, type } = this.props.match.params;
+
     return (
       <li
         className="list-groups-lists-list"
         key={list.id}
         style={{ borderColor: `#${group.color}` }}
       >
-        <div style={{ color: `#${group.color}` }}>
-          {list.nr} - {list.name}
-        </div>
-        <div className="list-groups-lists-list-entity">
-          {this.state.entities[list.idEntity].name_fr}
-          <br />
-          {this.state.entities[list.idEntity].name_nl}
-        </div>
+        <Link to={`/${year}/${type}/${group.id}/${list.id}`}>
+          <div style={{ color: `#${group.color}` }}>
+            {list.nr} - {list.name}
+          </div>
+          <div className="list-groups-lists-list-entity">
+            {this.state.entities[list.idEntity].name_fr}
+            <br />
+            {this.state.entities[list.idEntity].name_nl}
+          </div>
+        </Link>
       </li>
     );
   }

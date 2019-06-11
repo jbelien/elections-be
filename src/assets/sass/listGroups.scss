@@ -22,9 +22,14 @@
       text-decoration: none;
     }
 
-    .list-groups-group-name {
+    .list-groups-group-header {
+      display: flex;
+      justify-content: space-between;
       font-size: 1.17em;
-      font-weight: bold;
+
+      .list-groups-group-name {
+        font-weight: bold;
+      }
     }
 
     .list-groups-lists {
@@ -42,6 +47,10 @@
         margin-right: 5px;
         margin-top: 5px;
         padding: 10px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
 
         .list-groups-lists-list-entity {
           color: rgba(0, 0, 0, 0.5);
