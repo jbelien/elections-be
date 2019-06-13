@@ -1,6 +1,6 @@
 import React from "react";
 
-import { elections, electionsTypes } from "../config";
+import { elections } from "../config";
 import ElectionList from "./ListElections/ElectionList";
 
 import "../assets/sass/listElections.scss";
