@@ -7,7 +7,7 @@ export default class extends React.Component {
     return (
       <ul className="list-elections">
         {this.props.elections.map((election, index) => (
-          <ElectionItem key={index.toString()} year={election.year} types={election.types} />
+          <ElectionItem key={index} year={election.year} types={election.types} />
         ))}
       </ul>
     );
