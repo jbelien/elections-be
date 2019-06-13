@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { electionsTypes } from "../../config";
+
 export default class extends React.Component {
   render() {
     return (
@@ -9,10 +11,10 @@ export default class extends React.Component {
           <h2>{this.props.year}</h2>
           <ul className="list-elections-election-types">
             {this.props.types.map(type => (
-              <li key={type.key}>
-                {type.name_fr}
+              <li key={type}>
+                {electionsTypes[type].fr}
                 <br />
-                {type.name_nl}
+                {electionsTypes[type].nl}
               </li>
             ))}
           </ul>
