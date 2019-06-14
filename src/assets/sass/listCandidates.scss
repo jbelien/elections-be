@@ -1,0 +1,10 @@
+.table-candidates {
+  min-width: 50%;
+
+  .table-candidates-candidate {
+    .table-candidates-candidate-nr,
+    .table-candidates-candidate-votes {
+      text-align: right;
+    }
+  }
+}

@@ -7,7 +7,7 @@ export default class extends React.Component {
 
     return (
       <li className="list-groups-lists-list" key={list.id} style={{ borderColor: `#${group.color}` }}>
-        <Link to={`/${year}/${type}/${group.id}/${list.id}`}>
+        <Link to={`/${year}/${type}/${list.id}`}>
           <div style={{ color: `#${group.color}` }}>
             {list.nr} - {list.name}
           </div>
