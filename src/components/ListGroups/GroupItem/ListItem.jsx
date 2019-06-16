@@ -1,6 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+function Votes(props) {
+  const { votes, color } = props;
+
+  if (typeof votes === "undefined") return null;
+
+  return (
+    <div className="list-groups-lists-list-votes" style={{ color: `#${color}` }}>
+      {votes} vote(s)
+    </div>
+  );
+}
+
 export default class extends React.Component {
   render() {
     const { year, type, entities, group, list } = this.props;
@@ -16,6 +28,7 @@ export default class extends React.Component {
             <br />
             {entities[list.idEntity].name_nl}
           </div>
+          <Votes color={group.color} votes={list.votes} />
         </Link>
       </li>
     );

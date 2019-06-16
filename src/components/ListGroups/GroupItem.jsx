@@ -5,6 +5,8 @@ export default class extends React.Component {
   render() {
     const { year, type, entities, group, totalVotes } = this.props;
 
+    const lists = group.lists.slice().sort((a, b) => b.votes - a.votes);
+
     return (
       <li className="list-groups-group" key={group.id}>
         <div className="list-groups-group-header" style={{ color: `#${group.color}` }}>
@@ -15,7 +17,7 @@ export default class extends React.Component {
         </div>
 
         <ul className="list-groups-lists">
-          <ListList year={year} type={type} entities={entities} group={group} lists={group.lists} />
+          <ListList year={year} type={type} entities={entities} group={group} lists={lists} />
         </ul>
       </li>
     );

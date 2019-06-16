@@ -22,24 +22,52 @@ export default class extends React.Component {
 
     const level = electionsTypes[type].highestLevel;
 
-    Promise.all([
+    const promises = [
       fetch(`${api}/groups/${year}/${type}`).then(response => response.json()),
       fetch(`${api}/lists/${year}/${type}`).then(response => response.json()),
       fetch(`${api}/entities/${year}/${type}`).then(response => response.json()),
       fetch(`${api}/format-r/result/${year}/${type}/${level}`).then(response => response.json())
-    ]).then(data => {
+    ];
+
+    if (electionsTypes[type].listsLevel !== null && electionsTypes[type].listsLevel !== level) {
+      const level2 = electionsTypes[type].listsLevel;
+
+      promises.push(fetch(`${api}/format-r/result/${year}/${type}/${level2}`).then(response => response.json()));
+    }
+
+    Promise.all(promises).then(data => {
       const entities = data[2];
 
       const groups = Object.values(data[0])
         .map(group => {
           group.lists = Object.values(data[1]).filter(list => list.idGroup === group.id);
+          console.log(group.lists);
 
-          const result = data[3].lists.find(list => list.idGroup === group.id);
+          const resultGroup = data[3].lists.find(list => list.idGroup === group.id);
 
           group.votes =
-            result.countSubCategory1 + result.countSubCategory2 + result.countSubCategory3 + result.countSubCategory4;
+            resultGroup.countSubCategory1 +
+            resultGroup.countSubCategory2 +
+            resultGroup.countSubCategory3 +
+            resultGroup.countSubCategory4;
 
-          group.seats = result.seats;
+          group.seats = resultGroup.seats;
+
+          if (typeof data[4] !== "undefined") {
+            group.lists.map(list => {
+              const resultList = data[4]
+                .find(entity => entity.metadata.idEntity === list.idEntity)
+                .lists.find(l => l.idGroup === list.idGroup);
+
+              list.votes =
+                resultList.countSubCategory1 +
+                resultList.countSubCategory2 +
+                resultList.countSubCategory3 +
+                resultList.countSubCategory4;
+
+              return list;
+            });
+          }
 
           return group;
         })

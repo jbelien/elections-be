@@ -12,51 +12,61 @@ export const electionsTypes = {
   BR: {
     name_fr: "Parlement de la Région de Bruxelles-Capitale",
     name_nl: "Brussels Hoofdstedelijk Parlement",
-    highestLevel: "R"
+    highestLevel: "R",
+    listsLevel: "R"
   },
   CG: {
     name_fr: "Conseil communal",
     name_nl: "Gemeenteraden",
-    highestLevel: "M"
+    highestLevel: "M",
+    listsLevel: null
   },
   CK: {
     name_fr: "Chambre",
     name_nl: "Kamer",
-    highestLevel: "R"
+    highestLevel: "R",
+    listsLevel: "C"
   },
   CS: {
     name_fr: "Conseil CPAS",
     name_nl: "OCMWraden",
-    highestLevel: "M"
+    highestLevel: "M",
+    listsLevel: null
   },
   DE: {
     name_fr: "Parlement de la Communauté germanophone",
     name_nl: "Parlement van de Duitstalige Gemeenschap",
-    highestLevel: "G"
+    highestLevel: "G",
+    listsLevel: "G"
   },
   DI: {
     name_fr: "Conseil de district (Anvers)",
     name_nl: "Districtraden (in Antwerpen)",
-    highestLevel: "I"
+    highestLevel: "I",
+    listsLevel: null
   },
   EU: {
     name_fr: "Parlement européen",
     name_nl: "Europees Parlement",
-    highestLevel: "R"
+    highestLevel: "R",
+    listsLevel: "L"
   },
   PR: {
     name_fr: "Conseil provincial",
     name_nl: "Provincieraden",
-    highestLevel: "P"
+    highestLevel: "P",
+    listsLevel: null
   },
   VL: {
     name_fr: "Parlement flamand",
     name_nl: "Vlaams Parlement",
-    highestLevel: "R"
+    highestLevel: "R",
+    listsLevel: "C"
   },
   WL: {
     name_fr: "Parlement régional wallon ",
     name_nl: "Waals Parlement",
-    highestLevel: "R"
+    highestLevel: "R",
+    listsLevel: "C"
   }
 };
