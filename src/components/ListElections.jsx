@@ -15,7 +15,7 @@ export default class extends React.Component {
           </span>
           Elections BE
         </h1>
-        <ElectionList elections={elections} />,
+        <ElectionList elections={elections} />
       </div>
     );
   }
