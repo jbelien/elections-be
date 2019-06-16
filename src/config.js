@@ -10,43 +10,53 @@ export const elections = [
 
 export const electionsTypes = {
   BR: {
-    fr: "Parlement de la Région de Bruxelles-Capitale",
-    nl: "Brussels Hoofdstedelijk Parlement"
+    name_fr: "Parlement de la Région de Bruxelles-Capitale",
+    name_nl: "Brussels Hoofdstedelijk Parlement",
+    highestLevel: "R"
   },
   CG: {
-    fr: "Conseil communal",
-    nl: "Gemeenteraden"
+    name_fr: "Conseil communal",
+    name_nl: "Gemeenteraden",
+    highestLevel: "M"
   },
   CK: {
-    fr: "Chambre",
-    nl: "Kamer"
+    name_fr: "Chambre",
+    name_nl: "Kamer",
+    highestLevel: "R"
   },
   CS: {
-    fr: "Conseil CPAS",
-    nl: "OCMWraden"
+    name_fr: "Conseil CPAS",
+    name_nl: "OCMWraden",
+    highestLevel: "M"
   },
   DE: {
-    fr: "Parlement de la Communauté germanophone",
-    nl: "Parlement van de Duitstalige Gemeenschap"
+    name_fr: "Parlement de la Communauté germanophone",
+    name_nl: "Parlement van de Duitstalige Gemeenschap",
+    highestLevel: "G"
   },
   DI: {
-    fr: "Conseil de district (Anvers)",
-    nl: "Districtraden (in Antwerpen)"
+    name_fr: "Conseil de district (Anvers)",
+    name_nl: "Districtraden (in Antwerpen)",
+    highestLevel: "I"
   },
   EU: {
-    fr: "Parlement européen",
-    nl: "Europees Parlement"
+    name_fr: "Parlement européen",
+    name_nl: "Europees Parlement",
+    highestLevel: "R"
   },
   PR: {
-    fr: "Conseil provincial",
-    nl: "Provincieraden"
+    name_fr: "Conseil provincial",
+    name_nl: "Provincieraden",
+    highestLevel: "P"
   },
   VL: {
-    fr: "Parlement flamand",
-    nl: "Vlaams Parlement"
+    name_fr: "Parlement flamand",
+    name_nl: "Vlaams Parlement",
+    highestLevel: "R"
   },
   WL: {
-    fr: "Parlement régional wallon ",
-    nl: "Waals Parlement"
+    name_fr: "Parlement régional wallon ",
+    name_nl: "Waals Parlement",
+    highestLevel: "R"
   }
 };

@@ -12,9 +12,9 @@ export default class extends React.Component {
           <ul className="list-elections-election-types">
             {this.props.types.map(type => (
               <li key={type}>
-                {electionsTypes[type].fr}
+                {electionsTypes[type].name_fr}
                 <br />
-                {electionsTypes[type].nl}
+                {electionsTypes[type].name_nl}
               </li>
             ))}
           </ul>

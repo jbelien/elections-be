@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { api } from "../../config";
+import { api, electionsTypes } from "../../config";
 import TypeStatus from "./TypeStatus";
 
 export default class extends React.Component {
@@ -16,7 +16,11 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${api}/format-r/history/${this.props.year}/${this.props.type}/${this.props.type !== "DE" ? "R" : "G"}`)
+    const { year, type } = this.props;
+
+    const level = electionsTypes[type].highestLevel;
+
+    fetch(`${api}/format-r/history/${year}/${type}/${level}`)
       .then(response => response.json())
       .then(data => {
         const history = data.history[data.history.length - 1];

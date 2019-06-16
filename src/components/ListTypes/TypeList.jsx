@@ -13,8 +13,8 @@ export default class extends React.Component {
               key={type}
               year={this.props.year}
               type={type}
-              name_fr={electionsTypes[type].fr}
-              name_nl={electionsTypes[type].nl}
+              name_fr={electionsTypes[type].name_fr}
+              name_nl={electionsTypes[type].name_nl}
             />
           );
         })}

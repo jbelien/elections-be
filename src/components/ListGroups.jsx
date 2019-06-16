@@ -20,11 +20,13 @@ export default class extends React.Component {
   componentDidMount() {
     const { year, type } = this.props.match.params;
 
+    const level = electionsTypes[type].highestLevel;
+
     Promise.all([
       fetch(`${api}/groups/${year}/${type}`).then(response => response.json()),
       fetch(`${api}/lists/${year}/${type}`).then(response => response.json()),
       fetch(`${api}/entities/${year}/${type}`).then(response => response.json()),
-      fetch(`${api}/format-r/result/${year}/${type}/${type !== "DE" ? "R" : "G"}`).then(response => response.json())
+      fetch(`${api}/format-r/result/${year}/${type}/${level}`).then(response => response.json())
     ]).then(data => {
       const entities = data[2];
 
@@ -67,9 +69,9 @@ export default class extends React.Component {
       <div>
         <h1>{year}</h1>
         <h2>
-          {electionsTypes[type].fr}
+          {electionsTypes[type].name_fr}
           <br />
-          {electionsTypes[type].nl}
+          {electionsTypes[type].name_nl}
         </h2>
         <Charts year={year} type={type} groups={groups} totalVotes={totalVotes} />
         <GroupList year={year} type={type} entities={entities} groups={groups} totalVotes={totalVotes} />
