@@ -41,7 +41,6 @@ export default class extends React.Component {
       const groups = Object.values(data[0])
         .map(group => {
           group.lists = Object.values(data[1]).filter(list => list.idGroup === group.id);
-          console.log(group.lists);
 
           const resultGroup = data[3].lists.find(list => list.idGroup === group.id);
 
