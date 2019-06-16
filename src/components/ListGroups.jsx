@@ -1,5 +1,4 @@
 import React from "react";
-import qs from "query-string";
 
 import { api, electionsTypes } from "../config";
 import GroupList from "./ListGroups/GroupList";
@@ -11,10 +10,7 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
 
-    const filter = qs.parse(props.location.search).entity;
-
     this.state = {
-      filter: typeof filter !== "undefined" ? parseInt(filter) : null,
       groups: [],
       entities: {},
       totalVotes: 0
@@ -34,13 +30,7 @@ export default class extends React.Component {
 
       const groups = Object.values(data[0])
         .map(group => {
-          group.lists = Object.values(data[1]).filter(list => {
-            if (this.state.filter !== null) {
-              return list.idGroup === group.id && list.idEntity === this.state.filter;
-            } else {
-              return list.idGroup === group.id;
-            }
-          });
+          group.lists = Object.values(data[1]).filter(list => list.idGroup === group.id);
 
           const result = data[3].lists.find(list => list.idGroup === group.id);
 
