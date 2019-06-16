@@ -13,7 +13,8 @@ export default class extends React.Component {
       entity: {},
       group: {},
       list: {},
-      candidates: []
+      candidates: [],
+      order: "nr"
     };
   }
 
@@ -49,11 +50,25 @@ export default class extends React.Component {
     });
   }
 
+  componentDidUpdate(props, state) {
+    const { order } = this.state;
+
+    if (order !== state.order) {
+      const candidates = this.state.candidates.slice();
+
+      if (order === "nr") {
+        candidates.sort((a, b) => a.nr - b.nr);
+      } else if (order === "votes") {
+        candidates.sort((a, b) => b.votes - a.votes);
+      }
+
+      this.setState({ candidates });
+    }
+  }
+
   render() {
     const { year, type } = this.props.match.params;
     const { entity, group, list, candidates } = this.state;
-
-    if (candidates.length === 0) return null;
 
     return (
       <div>
@@ -71,6 +86,18 @@ export default class extends React.Component {
           <br />
           {entity.name_nl}
         </h4>
+        <div>
+          <label htmlFor="candidate-order">Sort by:</label>
+          <select
+            id="candidate-order"
+            autoComplete="off"
+            value={this.state.order}
+            onChange={event => this.setState({ order: event.target.value })}
+          >
+            <option value="nr">List number</option>
+            <option value="votes">Number of votes</option>
+          </select>
+        </div>
         <CandidateTable title="Effectives" candidates={candidates.filter(candidate => candidate.type === "E")} />
         <CandidateTable title="Substitutes" candidates={candidates.filter(candidate => candidate.type === "S")} />
       </div>
